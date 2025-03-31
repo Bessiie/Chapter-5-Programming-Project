@@ -1,20 +1,51 @@
-// Chapter 5 Programming Project.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+// Write a program that will predict the size of a population of organisms.
+// The program should ask the user for the starting number of organisms, their average daily population increase (as a percentage),
+// and the number of days they will multiply. A loop should display the size of the popluation for each day.
+// Input Validation: Do not accept a number less than 2 for the starting size of the population.
+// Do not accept a negative number for average daily population increase. Do not accept a number less than 1 for the number of days they will multiply.
 
 #include <iostream>
 
-int main()
-{
-    std::cout << "Hello World!\n";
+int main() {
+	
+	//Variables
+	double rateIncrease, daysOfGrowth, currentPopulation, dailyIncrease;
+	//For loop counter
+	int currentDay = 1;
+	
+	//Input for variables
+	std::cout << "Enter the inital population count: \n";
+	std::cin >> currentPopulation;
+	std::cout << "Enter the population increase percentage: \n";
+	std::cin >> rateIncrease;
+	std::cout << "Enter the number of days for growth: \n";
+	std::cin >> daysOfGrowth;
+	
+	//Error messages
+	if (currentPopulation < 2) {
+		std::cout << "Population cannot be less than 2.\n";
+		return 1;
+	}
+
+	if (rateIncrease < 0) {
+		std::cout << "Increase percent rate cannot be negative\n";
+		return 1;
+	}
+
+	if (daysOfGrowth < 1) {
+		std::cout << "Days of growth cannot be less than 1\n";
+		return 1;
+	}
+	
+	//Daily increase amount
+	dailyIncrease = (rateIncrease/100) * currentPopulation;
+
+	//Loop to display each day and population amount.
+	for (int i = 0; i < (daysOfGrowth); i++) {
+		std::cout << "Day " << currentDay << " population: " << currentPopulation << "\n";
+		currentPopulation += dailyIncrease;
+		currentDay += 1;
+	}
+
+	return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
