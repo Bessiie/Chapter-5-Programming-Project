@@ -1,20 +1,32 @@
-// Chapter 5 Programming Project.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include <cstdlib>   
+#include <ctime>
 
-int main()
-{
-    std::cout << "Hello World!\n";
+int main() {
+    // Seed random number generator
+    std::srand(std::time(0));
+
+    int secretNumber = std::rand() % 100 + 1; // Random number between 1 and 100
+    int guess; //to store value for comparsion
+    int guessCount = 0; //tracks times guess
+
+    std::cout << "Guess the number (between 1 and 100): ";
+
+    
+    do {
+        std::cin >> guess; //stores data
+        ++guessCount; //increases guess count
+
+        if (guess > secretNumber) {
+            std::cout << "Too high, try again: ";
+        }
+        else if (guess < secretNumber) {
+            std::cout << "Too low, try again: ";
+        }
+
+    } while (guess != secretNumber);
+
+    std::cout << "Congratulations! You guessed it in " << guessCount << " attempts.\n";
+
+    return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
