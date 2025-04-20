@@ -20,7 +20,7 @@ int main() {
     // Get user input
     std::cout << "Enter the name of the town: ";
     std::getline(std::cin, townName);
-    std::cout << "Enter the name of the data file(add .txt): ";
+    std::cout << "Enter the name of the data file: ";//file name is people.txt
     std::getline(std::cin, fileName);
     std::cout << "Enter the starting year: ";
     std::cin >> startYear;
